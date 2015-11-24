@@ -5,7 +5,8 @@ from scipy.optimize import curve_fit
 
 '''
 Script con el cual calcularemos la constante de Hubble con un
-intervalo de confianza del 95%
+intervalo de confianza del 95%, para los datos presentados en
+SNIa.dat
 '''
 
 def bootstrap(data):
