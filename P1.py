@@ -14,12 +14,13 @@ def bootstrap(data):
     intervalo de  confianza (95%)
     '''
     N = data.shape[0]
+    #print(N)
     N_boot = 10000
     H = np.zeros(N_boot)
     for i in range(N_boot):
         s = np.random.randint(low=0, high=N, size=N)
         datos_dummy = data[s][s]
-        #print(datos_dummy)
+        #print(data[s][s])
         x = datos_dummy[:, 0]
         v = datos_dummy[:, 1]
         H_1, cov_1 = curve_fit(minimizar_1, x, v, 2)
@@ -48,7 +49,7 @@ H_1, cov_1 = curve_fit(minimizar_1, x, v, 2)
 H_2, cov_2 = curve_fit(minimizar_2, v, x, 2)
 
 prom = (H_1 + H_2) / 2
-print(H_1, H_2, prom)
+print "H = {}".format(prom[0])
 
 l = np.linspace(-0.2, 2.2, 10**6)
 fig = plt.figure()
@@ -62,3 +63,4 @@ plt.legend(loc=2)
 plt.show()
 
 intervalo_confianza = bootstrap(data)
+

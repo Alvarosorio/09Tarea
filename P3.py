@@ -42,7 +42,7 @@ r = np.polyfit(banda_i, banda_z, 1)
 
 x = np.linspace(0., 430, 10**6)
 fig = plt.figure()
-print "x*{} + {}".format(r[0], r[1])
+print "La recta optima : x*{} + {}".format(r[0], r[1])
 plt.plot(x, lineal(r[0], r[1], x), 'r', label='Ajuste')
 plt.errorbar(banda_i, banda_z, xerr=error_i, yerr=error_z, fmt='o',
              label='Datos Observacionales')
@@ -52,3 +52,4 @@ plt.legend(loc=2)
 plt.show()
 
 confianza = montecarlo(banda_i, error_i, banda_z, error_z)
+
